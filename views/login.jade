@@ -1,0 +1,43 @@
+doctype
+html(lang='es')
+	head
+		title='CRUD Nuevo'
+		link(href="../css/bootstrap.min.css" rel="stylesheet")
+		link(href="../css/estilo.css" rel="stylesheet")
+		script(src="../js/jquery-1.11.2.min.js")
+		script(src="../js/bootstrap.min.js")
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		meta(charset='utf-8')
+	body(style="background-color:#eceff1;")
+		nav(class="navbar navbar-inverse")
+				div(class="container-fluid")
+					div(class="navbar-header")
+						button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hid")
+							span(class="icon-bar")
+							span(class="icon-bar")
+							span(class="icon-bar")
+						a(class="navbar-brand" href="#") CRUD
+					div(class="collapse navbar-collapse" id="hid")
+						form(class="navbar-form navbar-right" role="search")
+							input(type="text" class="form-control" placeholder="Busqueda..." style="margin-right:5px")
+							button(type="submit" class="btn btn-default") Buscar 
+
+		div(class="container")
+			br
+			hr(style="border-width: 2px;")
+			center
+				div(class="center")
+					img(src="../img/login.png" class="img-circle center-block")
+
+				div(style="width: 300px;height: 300px;left: 100px;top: 50px;")
+					form(class="form-signin" action="/login" method="post")
+						h2(class="form-signin-heading") Iniciar Sesión
+						input(type="text" placeholder="Correo electronico" autofocus="autofocus" class="form-control" name="username")
+						br
+						input(type="password" placeholder="Contraseña" class="form-control" name="password")
+						br
+						button(type="submit" class="btn btn-lg btn-defult btn-block") Sign in
+				
+			br
+			hr(style="border-width: 2px;")
+	footer(class="footer" )

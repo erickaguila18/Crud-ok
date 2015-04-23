@@ -1,0 +1,61 @@
+doctype
+html(lang='es')
+	head
+		title='CRUD Consultar'
+		link(href="../css/bootstrap.min.css" rel="stylesheet")
+		link(href="../css/estilo.css" rel="stylesheet")
+		script(src="../js/jquery-1.11.2.min.js")
+		script(src="../js/bootstrap.min.js")
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		meta(charset='utf-8')
+	body 
+		nav(class="navbar navbar-inverse")
+				div(class="container-fluid")
+					div(class="navbar-header")
+						button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hid")
+							span(class="icon-bar")
+							span(class="icon-bar")
+							span(class="icon-bar")
+						a(class="navbar-brand" href="/") CRUD
+					div(class="collapse navbar-collapse" id="hid")
+						ul(class="nav navbar-nav")
+							li: a(href="/usuarios/crear") Nuevo 
+							li(class="active"): a(href="#") Consulta
+						form(class="navbar-form navbar-right" role="search")
+							input(type="text" class="form-control" placeholder="Busqueda..." style="margin-right:5px")
+							button(type="submit" class="btn btn-default") Buscar 
+		div(class="container")
+			div(class="pull-right")
+				img(src="../img/usuario.png" class="img-circle center-block")
+				h4(class="center-block") Administrador
+			br
+			hr(style="border-width: 2px;")
+			h2 Usuarios
+			br
+			div(class="table-responsive")
+				table(class="table table-responsive table-striped table-hover")
+					tr
+						th No.
+						th Usuario
+						th Email
+						th Editar
+						th Eliminar
+						- if (usuarios)
+							- var count=0;
+							- each usuario in usuarios
+								- count=count+1; 
+								
+								tr
+									td #{count}
+									td #{usuario.name}
+									td #{usuario.email}
+									td: a(href="/usuarios/#{usuario._id}/edit"): img(src="../img/editar.png" title="Editar")
+									td
+										form(method="post", action="/usuarios/#{usuario._id}")
+											input(type="hidden",name="_method",value="DELETE")
+											a(href="javascript:void(0);", onclick="if(confirm('¿Está seguro que desea eliminar este registro?')){this.parentNode.submit();}"): img(src="../img/eliminar.png" title="eliminar")
+			ul(class="pager")
+				li(class="previous"): a(href="#" style="color:black") &larr; Anterior
+				li(class="next"): a(href="#" style="color:black") Siguiente &rarr;
+			br
+			hr(style="border-width: 2px;")

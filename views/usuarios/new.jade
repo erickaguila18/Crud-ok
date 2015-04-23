@@ -1,0 +1,58 @@
+doctype
+html(lang='es')
+	head
+		title='CRUD Nuevo'
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+		link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
+		script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")
+
+		link(href="../css/bootstrap.min.css" rel="stylesheet")
+		link(href="../css/estilo.css" rel="stylesheet")
+		script(src="../js/jquery-1.11.2.min.js")
+		script(src="../js/bootstrap.min.js")
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		meta(charset='utf-8')
+	body
+		nav(class="navbar navbar-inverse")
+				div(class="container-fluid")
+					div(class="navbar-header")
+						button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hid")
+							span(class="icon-bar")
+							span(class="icon-bar")
+							span(class="icon-bar")
+						a(class="navbar-brand" href="/") CRUD
+					div(class="collapse navbar-collapse" id="hid")
+						ul(class="nav navbar-nav")
+							li(class="active"): a(href="/#") Nuevo 
+							li: a(href="/usuarios") Consulta
+						form(class="navbar-form navbar-right" role="search")
+							input(type="text" class="form-control" placeholder="Busqueda..." style="margin-right:5px")
+							button(type="submit" class="btn btn-default") Buscar 
+
+		div(class="container")
+			div(class="pull-right")
+				img(src="../img/usuario.png" class="img-circle center-block")
+				h4(class="center-block") Administrador
+			br
+			hr(style="border-width: 2px;")
+			form(method="POST", action="#{action}")
+				-if(put)
+					h2 Editar Usuario
+					input(type="hidden", name="_method", value="PUT")
+					br
+				-else
+					h2 Nuevo Usuario
+					br
+				div(class="form-group")
+					label(for="nombre") Nombre:
+					input(class="form-control" id="nombre" placeholder="Ingrese Nombre" type="text" name="name" required="required" value="#{usuario.name}")
+				div(class="form-group")
+					label(for="correo") Email:
+					input(class="form-control" id="correo" placeholder="Ingrese Email" type="email" name="email" required="required" value="#{usuario.email}")
+				div(class="form-group")
+					label(for="password") Contraseña:
+					input(class="form-control" id="password" placeholder="Contraseña" type="password" name="password" required="required" value="#{usuario.password}")
+				button(type="submit" class="btn btn-default") Enviar
+			br
+			hr(style="border-width: 2px;")
+	

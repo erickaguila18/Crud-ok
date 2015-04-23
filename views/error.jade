@@ -1,0 +1,34 @@
+doctype
+html(lang='es')
+	head
+		title='CRUD Nuevo'
+		link(href="../css/bootstrap.min.css" rel="stylesheet")
+		link(href="../css/estilo.css" rel="stylesheet")
+		script(src="../js/jquery-1.11.2.min.js")
+		script(src="../js/bootstrap.min.js")
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		meta(charset='utf-8')
+	body
+		nav(class="navbar navbar-inverse")
+				div(class="container-fluid")
+					div(class="navbar-header")
+						button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hid")
+							span(class="icon-bar")
+							span(class="icon-bar")
+							span(class="icon-bar")
+						a(class="navbar-brand" href="#") CRUD
+					div(class="collapse navbar-collapse" id="hid")
+						form(class="navbar-form navbar-right" role="search")
+							input(type="text" class="form-control" placeholder="Busqueda..." style="margin-right:5px")
+							button(type="submit" class="btn btn-default") Buscar 
+
+		div(class="container")
+			br
+			hr
+			img(src="../img/error.png" class="pull-right")
+			block content
+				h1= message
+				h2= error.status
+				pre #{error.stack}
+			br
+			hr
